@@ -87,6 +87,7 @@ def grad_descent(func, gamma, eps=1.e-6, dim=1,x=0.9, **kwargs):
         
 #Test the gradient descent on the simple function
 # f(x, y) = (x-2)**2 + (y-2)**2
+#This part works
 grad_descent(f, 0.9, dim=2)  
 
 #Load in the data file
@@ -102,6 +103,7 @@ mstars = []
 alphas = []
 phis = []
 
+#This part does not work
 for mass in log_mgal:
     min_mstar = grad_descent(schechter_mstar, 10,x=10, dim=1, phi=1.e-9,alpha=-1.2,m_gal=mass, eps=1.e-6)
     min_phi = grad_descent(schechter_phi, 0.1,x=1.e-6, dim=1, m_star=11,alpha=1.5,m_gal=mass, eps=1.e-1) 
@@ -119,5 +121,8 @@ print(schechter_mstar(mstars,m_gal=log_mgal,
                                         alpha=alphas, phi=phis))
 plt.plot(log_mgal, schechter_mstar(mstars,m_gal=log_mgal,
                                         alpha=alphas, phi=phis), 'ro')
+
+plt.xlabel('Log M_gal [S_{sun}]')
+plt.ylabel('n ')
 plt.semilogy(log_mgal, n_mgal)
 plt.show()

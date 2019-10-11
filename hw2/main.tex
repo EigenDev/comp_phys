@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{amssymb}
+
+\title{Comp Physics HW 2}
+\author{Marcus DuPont}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item {Newman 6.11:\\
+    
+    \textbf{Solution:}\\
+    In general, when evaluating the relaxation method we have equations of the form $x = f(x)$.
+    Let us define a parameter $\Delta x$ that is described by
+    \begin{equation}
+        \Delta x = x^\prime -x = f(x) - x .
+    \end{equation}
+    According to Newman, the overrelaxation method involves the iteration of the following equation 
+    \begin{equation}
+        x^\prime = x + (1+\omega)\Delta x = (1+\omega)f(x) - \omega x
+    \end{equation}
+    Let us define $\epsilon$ to be the error on our current solution estimate. This implies that the true solution $x^*$ differs by said error by $x^* = x + \epsilon$. On the next iteration, let's define $\epsilon^\prime$ to be the error on next estimate, so that $x^* = x^\prime + \epsilon^\prime$. Performing a Taylor expansion, the value $x^\prime$ after an iteration is given in terms of the previous values by
+    \begin{equation}
+    \begin{split}
+         x^\prime &= f(x^*) = f(x^*) + f^\prime(x^*)(x-x^*)
+        = x^* + f^\prime(x^*)(x-x^*)\\
+        \Rightarrow x^\prime - x^* &= f^\prime(x^*)(x-x^*) = ((1+\omega)f^\prime(x) - \omega)(x-x^*)
+    \end{split}
+    \end{equation}
+    Now, finally applying values near the solution $x^*$, we get
+    \begin{equation*}
+        \epsilon^\prime = \epsilon \left[(1+\omega)f^\prime(x^*) - \omega \right]
+    \end{equation*}
+    Now, we revisit the solutions that deviate slightly by error $\epsilon$
+    \begin{equation*}
+        x^* = x + \epsilon = x + \frac{\epsilon^\prime}{(1+\omega) - \omega} = x^\prime + \epsilon^\prime
+    \end{equation*}
+    Finally, we get
+    \begin{equation}
+        \epsilon^\prime \approx \frac{x-x^\prime}{1 - 1/[(1+\omega)f^\prime(x) - \omega]}
+    \end{equation}
+    
+    \textbf{Results}:\\
+    
+    Relaxation results...\\\
+    Answer:0.7968126311118457, Iterations:14
+
+    Overrelaxation Results...\\\
+    Answer:0.7968123729832619, Iterations:4
+    
+    One may need to use a negative value of $\omega$ to avoid cancellation error if the function $f(x)$ is complex polynomial.
+    }
+    \item {\textbf{Newman 6.13}:
+    Planck's radiaition law says that the intensity of radiation per unit area per unit wavelength $\lambda$ a black body emits at a temperature $T$ is
+    \begin{equation*}
+        I(\lambda) = \frac{2\pi hc^2}{\lambda^5}\frac{1}{e^{hc/k_BT\lambda} - 1}
+    \end{equation*}
+    \begin{enumerate}
+        \item {At maximum intensity, the derivative of the radiation law must go to zero implying
+        \begin{equation*}
+        \begin{split}
+            \frac{dI}{d\lambda} &= \frac{-10\pi h c^2 \lambda^{-6}(e^{hc/k_BT\lambda} - 1) - 2\pi hc^2\lambda^{-5}(-hc/k_BT\lambda^{-2}e^{hc/k_BT\lambda}}{(e^{hc/k_BT\lambda} - 1)^2} = 0\\
+            &=  -5(e^{hc/k_BT\lambda} - 1) +\frac{hc}{k_BT\lambda}e^{hc/k_BT\lambda} = 0\\
+            &= -5 +5e^{-hc/k_BT\lambda} + \frac{hc}{k_BT\lambda} = 0
+        \end{split}
+        \end{equation*}
+        If we define a parameter $x= hc/k_BT\lambda$, we can rewrite the above equation as
+        \begin{equation*}
+            -5 +5e^{-x} + x = 0,
+        \end{equation*}
+        which can be solved numerically. From the numeric value of x, we arrive at
+        \begin{equation}
+            \lambda = \frac{b}{T}; \ b:= \frac{hc}{k_Bx}
+        \end{equation}
+        with $b$ being a constant of proportionality.
+        
+        \textbf{Results}:\\
+        The value of x is: 4.965113639831543\\
+        The value of the displacement constant is: 0.0028977732599822937 K m\\
+        
+        At a wavelength of 502nm, the Sun's temperature is roughly: 5772.45669319182 K
+}
+    \end{enumerate}
+    }
+    \item {Could not get the Schecter function to
+    fit at all.
+    }
+\end{enumerate}
+
+\end{document}
