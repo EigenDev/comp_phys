@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="zipcode" mtime="1512540765" type="string">
+		<stringvalue>32304</stringvalue>
+	</entry>
+	<entry name="colortemp" mtime="1512867044" type="string">
+		<stringvalue>2000</stringvalue>
+	</entry>
+	<entry name="autostart" mtime="1512540765" type="bool" value="true"/>
+</gconf>
